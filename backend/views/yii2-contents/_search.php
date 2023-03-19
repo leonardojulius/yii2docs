@@ -2,7 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 
+use backend\models\Yii2Select2;
 /** @var yii\web\View $this */
 /** @var backend\models\Yii2ContentsSearch $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -15,9 +18,14 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+<?= $form->field($model, 'category')->widget(Select2::classname(), [
 
-    <?= $form->field($model, 'category') ?>
+'data' => ArrayHelper::map(Yii2Select2::find()->all(),'id','name'),
+'options' => ['placeholder' => 'Choose a category'],
+'pluginOptions' => [
+'allowClear' => true
+],
+]); ?>
 
     <?= $form->field($model, 'title') ?>
 
@@ -25,7 +33,8 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+       
+        <?= Html::a('Reset', ['index'], ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

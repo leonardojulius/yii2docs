@@ -2,16 +2,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use backend\models\Yii2Select2;
-/** @var yii\web\View $this */
-/** @var backend\models\Yii2Contents $model */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Yii2contents', 'url' => ['index']];
+/** @var yii\web\View $this */
+/** @var backend\models\Yii2Select2 $model */
+
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Yii2select2s', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="yii2-contents-view">
+<div class="yii2-select2-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,17 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
- 
-
-            [
-                'label'=>'Category',
-                'displayOnly'=>true,
-                'value'=> !empty($model->category) ? Yii2Select2::findOne(['id'=> $model->category])->name : '',
-                'valueColOptions'=>['style'=>'width:30%']
-            ],
-            
-            'title',
-            'description:ntext',
+            'id',
+            'name',
         ],
     ]) ?>
 

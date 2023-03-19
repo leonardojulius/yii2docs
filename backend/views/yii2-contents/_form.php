@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+
+use backend\models\Yii2Select2;
 
 /** @var yii\web\View $this */
 /** @var backend\models\Yii2Contents $model */
@@ -12,7 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category')->textInput() ?>
+
+    <?= $form->field($model, 'category')->widget(Select2::classname(), [
+
+     'data' => ArrayHelper::map(Yii2Select2::find()->all(),'id','name'),
+     'options' => ['placeholder' => 'Choose a category'],
+     'pluginOptions' => [
+        'allowClear' => true
+      ],
+     ]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
-use backend\models\Yii2Contents;
-use backend\models\Yii2ContentsSearch;
+use backend\models\Yii2Select2;
+use backend\models\Yii2Select2Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * Yii2ContentsController implements the CRUD actions for Yii2Contents model.
+ * Yii2Select2Controller implements the CRUD actions for Yii2Select2 model.
  */
-class Yii2ContentsController extends Controller
+class Yii2Select2Controller extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class Yii2ContentsController extends Controller
     }
 
     /**
-     * Lists all Yii2Contents models.
+     * Lists all Yii2Select2 models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new Yii2ContentsSearch();
+        $searchModel = new Yii2Select2Search();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class Yii2ContentsController extends Controller
     }
 
     /**
-     * Displays a single Yii2Contents model.
+     * Displays a single Yii2Select2 model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class Yii2ContentsController extends Controller
     }
 
     /**
-     * Creates a new Yii2Contents model.
+     * Creates a new Yii2Select2 model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Yii2Contents();
+        $model = new Yii2Select2();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -77,13 +77,13 @@ class Yii2ContentsController extends Controller
             $model->loadDefaultValues();
         }
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Yii2Contents model.
+     * Updates an existing Yii2Select2 model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class Yii2ContentsController extends Controller
     }
 
     /**
-     * Deletes an existing Yii2Contents model.
+     * Deletes an existing Yii2Select2 model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class Yii2ContentsController extends Controller
     }
 
     /**
-     * Finds the Yii2Contents model based on its primary key value.
+     * Finds the Yii2Select2 model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Yii2Contents the loaded model
+     * @return Yii2Select2 the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Yii2Contents::findOne(['id' => $id])) !== null) {
+        if (($model = Yii2Select2::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

@@ -8,7 +8,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
-
+use backend\models\Yii2Contents;
+use backend\models\Yii2ContentsSearch;
 /**
  * Site controller
  */
@@ -62,7 +63,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new Yii2ContentsSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('/yii2-contents/index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
